@@ -3,6 +3,9 @@ plugins {
     id("kotlin-android")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id ("kotlin-parcelize")
+    id("com.google.devtools.ksp")
+    id ("androidx.navigation.safeargs")
 }
 
 android {
@@ -69,6 +72,10 @@ dependencies {
 
     // LiveData
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+
+    //annotation processor
+    kapt("androidx.lifecycle:lifecycle-compiler:2.7.0")
+
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")

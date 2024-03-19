@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NewNoteFragment"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/addNoteHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
+            android:text="Add Note."
+            android:textStyle="bold"
+            android:textColor="@color/lightOrange"
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/addNoteTitle"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:hint="Enter the title"
+            android:padding="12dp"
+            android:textSize="20sp"
+            android:background="@drawable/light_orange_border"
+            android:maxLines="1"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addNoteHeading"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/addNoteDescription"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/light_orange_border"
+            android:fontFamily="@font/poppins"
+            android:gravity="top"
+            android:hint="Enter the description"
+            android:padding="12dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addNoteTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
