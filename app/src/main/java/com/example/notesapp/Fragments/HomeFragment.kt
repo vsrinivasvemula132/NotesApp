@@ -103,6 +103,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
         }
 
+
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
