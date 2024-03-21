@@ -98,10 +98,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         //% sign is interpreted as wildcard character indicated there can be 0 or more char's in that positions
         val searchQuery = "%$query"
 
-//        notesViewModel.searchNotes(searchQuery).observe(this){list ->
-//            notesAdaptor.differ.submitList(list)
-//
-//        }
+        notesViewModel.searchNotes(searchQuery).observe(this){list ->
+            notesAdaptor.differ.submitList(list)
+
+        }
 
     }
 
