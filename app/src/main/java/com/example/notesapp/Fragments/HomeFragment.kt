@@ -12,6 +12,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notesapp.MainActivity
@@ -20,6 +21,7 @@ import com.example.notesapp.adapter.NotesAdaptor
 import com.example.notesapp.databinding.FragmentHomeBinding
 import com.example.notesapp.model.Note
 import com.example.notesapp.viewmodel.NoteViewmodel
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener,MenuProvider {
@@ -78,27 +80,29 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         }
 
         activity?.let {
-            notesViewModel.getAllNotes().observe(viewLifecycleOwner){note ->
-                notesAdaptor.differ.submitList(note)
-
-                updateUI(note)
-            }
-//            notesViewModel.getallNotes.observe(viewLifecycleOwner){ note ->
+//            notesViewModel.getAllNotes().observe(viewLifecycleOwner){note ->
 //                notesAdaptor.differ.submitList(note)
 //
 //                updateUI(note)
 //            }
+            notesViewModel.getallNotes.observe(viewLifecycleOwner){ note ->
+                notesAdaptor.differ.submitList(note)
+
+                updateUI(note)
+            }
         }
     }
+
 
     private fun searchNote(query: String?){
         //% sign is interpreted as wildcard character indicated there can be 0 or more char's in that positions
         val searchQuery = "%$query"
 
-        notesViewModel.searchNotes(searchQuery).observe(this){list ->
-            notesAdaptor.differ.submitList(list)
+//        notesViewModel.searchNotes(searchQuery).observe(this){list ->
+//            notesAdaptor.differ.submitList(list)
+//
+//        }
 
-        }
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

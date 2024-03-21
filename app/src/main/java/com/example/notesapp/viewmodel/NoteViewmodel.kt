@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class NoteViewmodel(app: Application, private val noteRepository: NoteRepository):AndroidViewModel(app) {
 
-    //var getallNotes = MutableLiveData<List<Note>>()
+    var getallNotes = MutableLiveData<List<Note>>()
     //var getsearchNotes = MutableLiveData<List<Note>>()
     fun addNote(note: Note){
             //it ensures that the coroutine is cancelled when the associate viewmodel is cleared
@@ -33,7 +33,7 @@ class NoteViewmodel(app: Application, private val noteRepository: NoteRepository
     }
     fun getAllNotes() {
         noteRepository.getAllNotes()
-        //getallNotes = noteRepository.getAllNotes() as MutableLiveData<List<Note>>
+        getallNotes = noteRepository.getAllNotes() as MutableLiveData<List<Note>>
 
     }
     fun searchNotes(query: String?) = noteRepository.searchNotes(query)
