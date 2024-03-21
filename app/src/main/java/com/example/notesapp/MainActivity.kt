@@ -11,7 +11,7 @@ import com.example.notesapp.viewmodel.NoteViewmodel
 class MainActivity : AppCompatActivity() {
 
     //here we set up the view model
-    private lateinit var noteViewModel: NoteViewmodel
+    lateinit var noteViewModel: NoteViewmodel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun setUpViewModel(){
         //NoteDatabase(this)..invoke
-        val noteRepository = NoteRepository(NoteDatabase.getDatabase(this))
+        val noteRepository = NoteRepository(NoteDatabase(this))
         val viewModelProviderFactory = NoteViewModelFactory(application, noteRepository)
 
         noteViewModel = ViewModelProvider(this,

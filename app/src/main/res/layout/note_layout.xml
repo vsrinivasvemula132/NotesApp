@@ -15,7 +15,7 @@
             android:padding="16dp"
             android:background="@drawable/light_orange_border">
             <TextView
-                android:id="@+id/noteTitle1"
+                android:id="@+id/noteTitle11"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:text="Note Title"
@@ -26,7 +26,7 @@
                 android:fontFamily="@font/poppins"
                 />
             <TextView
-                android:id="@+id/noteDescription1"
+                android:id="@+id/noteDescription11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Description"

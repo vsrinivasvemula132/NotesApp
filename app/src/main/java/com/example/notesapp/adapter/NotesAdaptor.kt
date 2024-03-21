@@ -47,11 +47,11 @@ class NotesAdaptor: RecyclerView.Adapter<NotesAdaptor.NoteViewHolder>() {
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val currentNote = differ.currentList[position]
 
-        holder.itemBinding.noteTitle1.text = currentNote.noteTitleX
-        holder.itemBinding.noteDescription1.text = currentNote.noteDescX
+        holder.itemBinding.noteTitle11.text = currentNote.noteTitleX
+        holder.itemBinding.noteDescription11.text = currentNote.noteDescX
 
         holder.itemView.setOnClickListener {
-            val direction1 = HomeFragmentDirections.actionHomeFragmentToEditNoteFragment()
+            val direction1 = HomeFragmentDirections.actionHomeFragmentToEditNoteFragment(currentNote)
             it.findNavController().navigate(direction1)
         }
 

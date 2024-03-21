@@ -53,33 +53,26 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    //Fragments
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.7")
 
-    //Room database
+    //room database
     implementation ("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
-
-    //Kotlin Extensions and Coroutines support for Room
-    implementation( "androidx.room:room-ktx:2.6.1")
-
-
-    // ViewModel
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-
-    // LiveData
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
-
-    //annotation processor
-    kapt("androidx.lifecycle:lifecycle-compiler:2.7.0")
-
+    ksp("androidx.room:room-compiler:2.6.1")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+
+    // Life Cycle & ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+
+    // Annotation processor
+    ksp("androidx.lifecycle:lifecycle-compiler:2.7.0")
 
 }

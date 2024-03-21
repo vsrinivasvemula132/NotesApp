@@ -15,26 +15,23 @@ abstract class NoteDatabase: RoomDatabase() {
 
         //Volatile -> changes made by one thread are immediately visible to another thread
         @Volatile
-        private var INSTANCE: NoteDatabase? = null
+        private var instance:NoteDatabase? = null
+        //this lock object is used to synchronized the database creation process
+        private val LOCK = Any()
 
-        fun getDatabase(contex: Context): NoteDatabase{
-            val tempInstance = INSTANCE
-            if(tempInstance != null){
-                return tempInstance
+        operator fun invoke(context: Context) = instance?:
+        synchronized(LOCK){
+            instance?:
+            createDatabase(context).also{
+                instance = it
             }
-
-            synchronized(this){
-                val instance = Room.databaseBuilder(
-                    contex.applicationContext,
-                    NoteDatabase::class.java,
-                    "note_database"
-                ).build()
-                INSTANCE = instance
-                return instance
-
-            }
-
         }
 
+        private fun createDatabase(context: Context) =
+            Room.databaseBuilder(
+                context.applicationContext,
+                NoteDatabase::class.java,
+                "note_database"
+            ).build()
     }
 }

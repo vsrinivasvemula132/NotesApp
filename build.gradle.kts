@@ -3,18 +3,13 @@ buildscript {
     repositories {
         google()
     }
-
     dependencies {
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7")
     }
 }
-
-
 plugins {
     id ("com.android.application") version "7.3.1" apply false
     id ("com.android.library") version "7.3.1" apply false
     id ("org.jetbrains.kotlin.android") version "1.7.20" apply false
     id("com.google.devtools.ksp") version "1.9.0-1.0.13" apply false
-    //above is kotlin symbol processing and it is better alternative for kapt pluggin
-    //kotlin("kapt") version "1.9.0"
 }
