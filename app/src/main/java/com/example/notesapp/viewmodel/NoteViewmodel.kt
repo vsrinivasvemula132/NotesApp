@@ -2,6 +2,7 @@ package com.example.notesapp.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.notesapp.model.Note
@@ -11,6 +12,9 @@ import kotlinx.coroutines.launch
 class NoteViewmodel(app: Application, private val noteRepository: NoteRepository): AndroidViewModel(app) {
 
     var getallNotes = MutableLiveData<List<Note>>()
+
+    private val _searchResult = MutableLiveData<List<Note>>()
+    val searchResult: LiveData<List<Note>> get() = _searchResult
     fun addNote(note: Note) =
         viewModelScope.launch {
             noteRepository.insertNote(note)
@@ -32,8 +36,15 @@ class NoteViewmodel(app: Application, private val noteRepository: NoteRepository
         getallNotes = noteRepository.getAllNotes() as MutableLiveData<List<Note>>
 
     }
+    fun searchNote(query: String?) {
+        // Perform search operation and update _searchResult LiveData
+        viewModelScope.launch {
+            _searchResult.value = noteRepository.searchNotes(query) as List<Note>
+        }
+    }
 
 
-    fun searchNote(query: String?) =
-        noteRepository.searchNotes(query)
+//    fun searchNote(query: String?) =
+//        noteRepository.searchNotes(query)
+//    }
 }
