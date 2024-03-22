@@ -8,36 +8,32 @@ import com.example.notesapp.model.Note
 import com.example.notesapp.repository.NoteRepository
 import kotlinx.coroutines.launch
 
-class NoteViewmodel(app: Application, private val noteRepository: NoteRepository):AndroidViewModel(app) {
+class NoteViewmodel(app: Application, private val noteRepository: NoteRepository): AndroidViewModel(app) {
 
     var getallNotes = MutableLiveData<List<Note>>()
-    //var getsearchNotes = MutableLiveData<List<Note>>()
-    fun addNote(note: Note){
-            //it ensures that the coroutine is cancelled when the associate viewmodel is cleared
-            //or destroyed to prevent potential memory leaks
+    fun addNote(note: Note) =
         viewModelScope.launch {
-                //this will launch in background using coroutines
             noteRepository.insertNote(note)
+        }
 
-        }
-    }
-    fun updateNote(note: Note){
-        viewModelScope.launch {
-            noteRepository.updateNote(note)
-        }
-    }
-    fun deleteNote(note: Note){
+    fun deleteNote(note: Note) =
         viewModelScope.launch {
             noteRepository.deleteNote(note)
         }
-    }
+
+    fun updateNote(note: Note) =
+        viewModelScope.launch {
+            noteRepository.updateNote(note)
+        }
+
+    //fun getAllNotes() = noteRepository.getAllNotes()
     fun getAllNotes() {
         noteRepository.getAllNotes()
         getallNotes = noteRepository.getAllNotes() as MutableLiveData<List<Note>>
 
     }
-    fun searchNotes(query: String?) = noteRepository.searchNotes(query)
 
 
-
+    fun searchNote(query: String?) =
+        noteRepository.searchNotes(query)
 }

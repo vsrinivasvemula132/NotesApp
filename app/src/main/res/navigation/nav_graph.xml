@@ -24,7 +24,7 @@
 <!--        its basically attaching data with its fragment-->
         <argument android:name="note"
             app:argType="com.example.notesapp.model.Note"
-            app:nullable="true" />
+            app:nullable="true"/>
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
